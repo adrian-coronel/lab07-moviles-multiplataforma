@@ -19,25 +19,20 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text("List View Example"),
+          title: Text("Menú"),
         ),
         body: ListView.builder(
-          itemCount: faqList.length,
+          itemCount: dishList.length,
           itemBuilder: (context, index) {
-            return ExpansionTile(
-              title: Text(
-                faqList[index].question,
-                style: TextStyle(color: index % 2 == 0 ? Colors.black : const Color.fromARGB(255, 243, 152, 33)),
+            return ListTile(
+              leading: Image.network(
+                dishList[index].image,
               ),
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Text(
-                    faqList[index].answer,
-                    style: TextStyle(fontSize: 16.0),
-                  ),
-                )
-              ],
+              title: Text(dishList[index].name),
+              subtitle: Text(dishList[index].price.toString()),
+              onTap: () => {
+                
+              },
             );
           }
         )
@@ -47,128 +42,64 @@ class MyApp extends StatelessWidget {
 }
 
 
-class FAQItem {
-  final String question;
-  final String answer;
+class Dish {
+  final String name;
+  final double price;
+  final String image;
 
-  FAQItem({required this.question, required this.answer});
+  Dish({required this.name, required this.price, required this.image});
 }
 
-List<FAQItem> faqList = [
-  FAQItem(
-    question: "¿Cuál es la capital de Francia?", 
-    answer: "La capital de Francia es París."
+List<Dish> dishList = [
+  Dish(
+    name: "Lomo saltado", 
+    price: 16.0,
+    image: "https://statics.exitosanoticias.pe/2023/09/650c3e034c568.png"
   ),
-  FAQItem(
-    question: "¿Cuántos planetas hay en nuestro sistema solar?", 
-    answer: "Hay ocho planetas en nuestro sistema solar."
+  Dish(
+    name: "Seco a la norteña", 
+    price: 15.0,
+    image: "https://i.ytimg.com/vi/ktGZN84kOm0/maxresdefault.jpg"
   ),
-  FAQItem(
-    question: "¿Cuál es el océano más grande del mundo?", 
-    answer: "El océano más grande del mundo es el Océano Pacífico."
+  Dish(
+    name: "Ceviche", 
+    price: 25.50,
+    image: "https://www.elespectador.com/resizer/tyGJPN_YmWpagQFeXq_YYOxAKjY=/arc-anglerfish-arc2-prod-elespectador/public/2AVD5Z6Y2ZFWHETPQGCPLMNK4A.jpg"
   ),
-  FAQItem(
-    question: "¿Cuál es...", 
-    answer: "..."
+  Dish(
+    name: "bistec a lo pobre", 
+    price: 14.0,
+    image: "https://origin.cronosmedia.glr.pe/large/2023/07/31/lg_64c7e2b78350642f29677b85.jpg"
+  ),
+  Dish(
+    name: "Ají de Gallina", 
+    price: 13.0,
+    image: "https://www.recetasnestle.com.pe/sites/default/files/srh_recipes/535186920a8b142c9d521f8e9390fedd.jpg"
+  ),
+  Dish(
+    name: "Arroz con Pollo", 
+    price: 14.0,
+    image: "https://i.pinimg.com/736x/3f/12/0f/3f120f02440e701951ff8a9d73f48a3a.jpg"
+  ),
+  Dish(
+    name: "Tallarines a la Huancaína", 
+    price: 12.50,
+    image: "https://www.comida-peruana.com/base/stock/Recipe/250-image/250-image_web.jpg.webp"
+  ),
+  Dish(
+    name: "Aguadito", 
+    price: 13.0,
+    image: "https://perudelights.com/wp-content/uploads/2012/09/Chicken-Aguadito.-jpg-1.jpg"
+  ),
+  Dish(
+    name: "Pachamanca", 
+    price: 19.50,
+    image: "https://i.ytimg.com/vi/u9AMJGOF26g/maxresdefault.jpg"
+  ),
+  Dish(
+    name: "Tacu Tacu", 
+    price: 14.0,
+    image: "https://www.seriouseats.com/thmb/trUkovmZBP-USomb_AoJFXcLYQg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20230308-SEA-TacuTacu-AmandaSuarez-14-c35f9084c37743989224a64c046d1091.JPG"
   ),
 ];
 
-
-
-// ----------------------------------------------------
-// import 'package:flutter/material.dart';
-
-// void main() {
-//   runApp(const MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-
-//   // This widget is the root of your application.
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Flutter Demo',
-//       theme: ThemeData(
-//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-//         useMaterial3: true,
-//       ),
-//       debugShowCheckedModeBanner: false,
-//       home: Scaffold(
-//         appBar: AppBar(
-//           title: Text("List View Example"),
-//         ),
-//         body: ListView(
-//           children: <Widget>[
-
-//             ListTile(
-//               leading: Icon(Icons.home),
-//               title: Text("Home"),
-//               subtitle: Text("Home"),
-//               onTap: () => {
-
-//               },
-//             ),
-//             ListTile(
-//               leading: Icon(Icons.person),
-//               title: Text("Profile"),
-//               subtitle: Text("Profile"),
-//               onTap: () => {
-
-//               },
-//             ),
-//             ListTile(
-//               leading: Icon(Icons.message),
-//               title: Text("Message"),
-//               subtitle: Text("Message"),
-//               onTap: () => {
-
-//               },
-//             ),
-//             ListTile(
-//               leading: Icon(Icons.airplay),
-//               title: Text("Smart"),
-//               subtitle: Text("Smart"),
-//               onTap: () => {
-
-//               },
-//             ),
-//             ListTile(
-//               leading: Icon(Icons.headphones),
-//               title: Text("Music"),
-//               subtitle: Text("Music"),
-//               onTap: () => {
-
-//               },
-//             ),
-//             ListTile(
-//               leading: Icon(Icons.alarm),
-//               title: Text("Alarm"),
-//               subtitle: Text("Alarm"),
-//               onTap: () => {
-
-//               },
-//             ),
-//             ListTile(
-//               leading: Icon(Icons.html),
-//               title: Text("Code"),
-//               subtitle: Text("Code"),
-//               onTap: () => {
-
-//               },
-//             ),
-//             ListTile(
-//               leading: Icon(Icons.phone),
-//               title: Text("Contact"),
-//               subtitle: Text("Contact"),
-//               onTap: () => {
-//               },
-//             ),
-
-//           ],
-//         ),
-//       )
-//     );
-//   }
-// }
