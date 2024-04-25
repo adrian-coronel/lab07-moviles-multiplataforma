@@ -31,12 +31,54 @@ class MyApp extends StatelessWidget {
               title: Text(dishList[index].name),
               subtitle: Text(dishList[index].price.toString()),
               onTap: () => {
-                
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DetailScreen(dish: dishList[index]),
+                  ),
+                )
               },
             );
           }
         )
       )
+    );
+  }
+}
+
+class DetailScreen extends StatelessWidget {
+  final Dish dish;
+
+  DetailScreen({required this.dish});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Detail Screen'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Name: ${dish.name}',
+              style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.w500
+              ),
+            ),
+            Text(
+              'Price: ${dish.price}',
+              style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.w500
+              ),
+            ),
+            Image.network(dish.image),
+          ],
+        ),
+      ),
     );
   }
 }
